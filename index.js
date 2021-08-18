@@ -1,5 +1,12 @@
-const { Pool } = require('pg')
-const express = require('express')
+// const { Pool } = require('pg')
+import PG from 'pg';
+
+const Pool = PG.Pool;
+import express from 'express'
+// const express = require('express')
+
+// const compareObj = require('./utils/compareObj');
+import { corruptedObjs, compareObj } from './utils/compareObj.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -73,12 +80,11 @@ app.get('/compare', (req, res) => {
                     poolNew.end()
                     poolOld.end()
                 }else {
-                    let corruptedObjs = []
-                const compareObj = (newObj, oldObj) => {
-                       if (newObj.name !== oldObj.name || newObj.email !== oldObj.email || Object.keys(newObj).length !== 4 ) {
-                        objCorrupted.push(newObj)
-        }
-                }
+
+
+                    // let corruptedObjs = []
+
+              
             // todo - find:
             // 1. Missing data 
             // 2. corrupted data 
