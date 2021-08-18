@@ -2,7 +2,7 @@ import getPoolOld from '../connectDB/getPoolOld.js'
 import getPoolNew from '../connectDB/getPoolNew.js'
 
 import { corruptedObjs, compareObj } from '../utils/compareObj.js'
-
+import findDuplicates from '../utils/findDuplicates.js'
 
 const compareData = (req, res) => {
     const poolOld = getPoolOld()
@@ -27,13 +27,33 @@ const compareData = (req, res) => {
             // 3. new records 
 
             // corruptedObjs: 6120
-            newData.rows.forEach(el => {
-                const found = oldData.rows.filter(d => d.id === el.id)
-                if (found.length > 0) {
-                    compareObj(el, found[0])
-                }
-            })
-            res.status(200).send({corrupted: corruptedObjs.length, corruptedObjs})
+            // newData.rows.forEach(el => {
+            //     const found = oldData.rows.filter(d => d.id === el.id)
+            //     if (found.length > 0) {
+            //         compareObj(el, found[0])
+            //     }
+            // })
+            // res.status(200).send({corrupted: corruptedObjs.length, corruptedObjs})
+
+            // const findDuplicates = (array) => {
+            //     const itemIds = array.map(d => d.id)
+
+            //     const uniqueData = new Set(itemIds)
+            //     // console.log(uniqueData.size);
+            //     const filteredElements = itemIds.filter(item => {
+            //         if (uniqueData.has(item)) {
+            //             uniqueData.delete(item)
+            //         } else {
+            //             return item
+            //         }
+            //     })
+            //     return [...new Set(filteredElements)]
+            // }
+            const duplicates = findDuplicates(newData.rows)
+
+            res.status(200).send({duplicates: duplicates.length  })
+
+
         }
             })
         } 
