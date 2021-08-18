@@ -1,8 +1,9 @@
 import getPoolOld from '../connectDB/getPoolOld.js'
 import getPoolNew from '../connectDB/getPoolNew.js'
 
-import { corruptedObjs, compareObj } from '../utils/compareObj.js'
-
+import { corruptedObjs } from '../utils/compareObj.js'
+import findDuplicates from '../utils/findDuplicates.js'
+import findCorruptedData from '../utils/findCorruptedData.js'
 
 const compareData = (req, res) => {
     const poolOld = getPoolOld()
@@ -23,17 +24,19 @@ const compareData = (req, res) => {
               
             // todo - find:
             // 1. Missing data 
-            // 2. corrupted data 
             // 3. new records 
 
+            // done 
+            // found missing data
+            // found duplicates
+
             // corruptedObjs: 6120
-            newData.rows.forEach(el => {
-                const found = oldData.rows.filter(d => d.id === el.id)
-                if (found.length > 0) {
-                    compareObj(el, found[0])
-                }
-            })
-            res.status(200).send({corrupted: corruptedObjs.length, corruptedObjs})
+            findCorruptedData(newData.rows, oldData.rows)
+            const duplicates = findDuplicates(newData.rows)
+
+            res.status(200).send({duplicates: duplicates.length, corrupted: corruptedObjs.length, corruptedObjs  })
+
+
         }
             })
         } 
