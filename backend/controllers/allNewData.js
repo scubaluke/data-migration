@@ -1,15 +1,8 @@
-import getPoolNew from '../connectDB/getPoolNew.js'
+import getNewData from '../getData/getNewData.js';
 
-const allNewData = (req, res) => {
-    const pool = getPoolNew()
-    pool.query('SELECT * FROM accounts', (err, result) => {
-        if (err) {
-            console.log(err)
-            res.status(400).send(err)
-        }
-        res.status(200).send(result.rows)
-        pool.end()
-    })
-}
+const allNewData = async (req, res) => {
+  const data = await getNewData();
+  res.status(200).send(data);
+};
 
-export default allNewData
+export default allNewData;

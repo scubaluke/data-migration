@@ -1,15 +1,8 @@
-import getPoolOld from '../connectDB/getPoolOld.js'
+import getOldData from '../getData/getOldData.js';
 
-const allOldData = (req, res) => {
-    const pool = getPoolOld()
-    pool.query('SELECT * FROM accounts', (err, result) => {
-        if (err) {
-            console.log(err)
-            res.status(400).send(err)
-        }
-        res.status(200).send(result.rows)
-        pool.end()
-    })
-}
+const allOldData = async (req, res) => {
+  const data = await getOldData();
+  res.status(200).send(data);
+};
 
-export default allOldData
+export default allOldData;
