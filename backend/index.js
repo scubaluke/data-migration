@@ -5,6 +5,8 @@ import allNewData from './controllers/allNewData.js';
 import allOldData from './controllers/allOldData.js';
 import compareData from './controllers/compareData.js';
 
+import report from './controllers/report.js';
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -14,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.get('/old', allOldData);
 app.get('/new', allNewData);
-
+app.get('/report', report);
 app.get('/compare', compareData);
 
 app.listen(PORT, () => {
