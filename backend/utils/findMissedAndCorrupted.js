@@ -1,19 +1,15 @@
+import { compareObj } from './compareObj.js';
+
 const findMissedAndCorrupted = (newData, oldData) => {
   console.log('searching for missed and corrupted data since migration');
   const missedData = [];
   const corrupted = [];
   oldData.forEach((oldDocument) => {
-    // find id in both DB's
-    const newDocumentMatch = newData.filter(
+    const newDocumentMatch = newData.find(
       (newDocument) => newDocument.id === oldDocument.id
     );
-    // if document exists in both DB's check to see if it has been changed / corrupted
-    if (newDocumentMatch.length > 0) {
-      // if data doesn't match, data is corrupted
-      if (
-        newDocumentMatch[0].name !== oldDocument.name ||
-        newDocumentMatch[0].email !== oldDocument.email
-      ) {
+    if (newDocumentMatch) {
+      if (compareObj(newDocumentMatch, oldDocument)) {
         // push new corrupted data
         corrupted.push(newDocumentMatch);
       }

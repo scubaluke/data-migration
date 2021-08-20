@@ -1,4 +1,6 @@
-export const newData = [
+import { compareObj } from './compareObj.js';
+
+export const newD = [
   { id: 1, name: 'corrupted', email: 'myemail@gmail.com' },
   { id: 2, name: 'Newly added data', email: 'youremail@gmail.com' },
   { id: 3, name: 'kathy', email: 'thisemail@gmail.com' },
@@ -10,7 +12,7 @@ export const newData = [
   },
   { id: 12, name: 'steve', email: 'corruptEmail@gmail.com' },
 ];
-export const oldData = [
+export const oldD = [
   { id: 1, name: 'jim', email: 'myemail@gmail.com' },
   { id: 3, name: 'kathy', email: 'thisemail@gmail.com' },
   { id: 4, name: 'joe', email: 'someemail@gmail.com' },
