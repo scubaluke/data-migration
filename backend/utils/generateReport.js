@@ -1,6 +1,6 @@
 import { compareObj } from './compareObj';
 
-const generateReport = (newRecords, oldRecords) => {
+export const generateReport = (newRecords, oldRecords) => {
   const missedRecords = [];
   const corruptedRecords = [];
   /* eslint no-plusplus: "error" */
@@ -24,4 +24,4 @@ const generateReport = (newRecords, oldRecords) => {
   return { missedRecords, corruptedRecords, newRecords };
 };
 
-export default generateReport;
+// export default generateReport;

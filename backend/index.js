@@ -4,7 +4,7 @@ import express from 'express';
 import allNewData from './controllers/allNewData.js';
 import allOldData from './controllers/allOldData.js';
 import compareData from './controllers/compareData.js';
-import generateReport from './utils/generateReport.js';
+import { generateReport } from './utils/generateReport.js';
 
 import getNewData from './getData/getNewData.js';
 import getOldData from './getData/getOldData.js';
