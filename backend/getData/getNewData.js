@@ -11,8 +11,8 @@ const getNewData = async () => {
 
   client
     .connect()
-    .then(() => console.log('Previous DB connected'))
-    .catch((err) => console.error('Previous DB connection error', err.stack));
+    .then(() => console.log('New DB connected'))
+    .catch((err) => console.error('New DB connection error', err.stack));
 
   let data = {};
   try {
