@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
+import Report from './components/Report'
+import Loader from './components/Loader'
 
 function App() {
   const [data, setData] = useState({})
@@ -14,14 +16,12 @@ useEffect(() => {
   }
   getReport()
 }, [])
-console.log(data);
-console.log("corrupted",data.corruptedRecords);
-console.log('missed', data.missedRecords);
-console.log('new', data.newRecords);
+
   return (
     <div className="App">
-   <h1>App</h1>
-  { loading ? <h3>Loading...</h3>  : ( <> <p>{data.corruptedRecords.length} corrupted records</p> <p>{data.missedRecords.length} missed records</p><p>{data.newRecords.length} new records</p> </>)}
+   <h1>Data Migration Report</h1>
+  { loading ? <Loader /> : <Report data={data} /> }
+ 
     </div>
   );
 }
