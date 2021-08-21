@@ -22,7 +22,7 @@ const getNewData = async () => {
   } finally {
     client.end();
   }
-  return data;
+  return data.rows;
 };
 
 export default getNewData;
