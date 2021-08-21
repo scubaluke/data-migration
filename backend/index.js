@@ -9,6 +9,8 @@ import generateReport from './utils/generateReport.js';
 import getNewData from './getData/getNewData.js';
 import getOldData from './getData/getOldData.js';
 
+import report from './controllers/report.js';
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -18,10 +20,7 @@ app.get('/', (req, res) => {
 
 app.get('/old', allOldData);
 app.get('/new', allNewData);
-app.get('/report', async (req, res) => {
-  const report = await generateReport(getNewData, getOldData);
-  res.status(200).send(report);
-});
+app.get('/report', report);
 app.get('/compare', compareData);
 
 app.listen(PORT, () => {

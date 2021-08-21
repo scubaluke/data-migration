@@ -1,6 +1,8 @@
-import { compareObj } from './compareObj';
+const compareObj = (newObj, oldObj) =>
+  newObj.name !== oldObj.name || newObj.email !== oldObj.email;
 
 const generateReport = (newRecords, oldRecords) => {
+  console.log('scanning DB');
   const missedRecords = [];
   const corruptedRecords = [];
   /* eslint no-plusplus: "error" */

@@ -22,7 +22,7 @@ const getOldData = async () => {
   } finally {
     client.end();
   }
-  return data;
+  return data.rows;
 };
 
 export default getOldData;

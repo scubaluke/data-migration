@@ -4,10 +4,10 @@ import findMissedAndCorrupted from '../utils/findMissedAndCorrupted.js';
 import findNewlyCreated from '../utils/findNewlyCreated.js';
 
 const compareData = async (req, res) => {
-  try {
-    const { rows: oldData } = await getOldData();
-    const { rows: newData } = await getNewData();
+  const oldData = await getOldData();
+  const newData = await getNewData();
 
+  try {
     const { missedData, corrupted } = findMissedAndCorrupted(newData, oldData);
     const newlyCreated = findNewlyCreated(newData, oldData);
 
