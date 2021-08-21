@@ -1,6 +1,6 @@
 const getNewData = require('../getData/getNewData.js');
 const getOldData = require('../getData/getOldData.js');
-const generateReport = require('../getData/getOldData.js');
+const generateReport = require('../utils/generateReport');
 
 const report = async (req, res) => {
   try {
