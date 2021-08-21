@@ -1,8 +1,8 @@
-import express from 'express';
+const express = require('express');
 
-import allNewData from './controllers/allNewData.js';
-import allOldData from './controllers/allOldData.js';
-import report from './controllers/report.js';
+const allNewData = require('./controllers/allNewData');
+const allOldData = require('./controllers/allOldData');
+const report = require('./controllers/report');
 
 const app = express();
 const PORT = process.env.PORT || 5000;

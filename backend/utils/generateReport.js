@@ -23,4 +23,4 @@ const generateReport = (newRecords, oldRecords) => {
   console.log('Finished scanning database, sending report');
   return { missedRecords, corruptedRecords, newRecords };
 };
-export default generateReport;
+module.exports = generateReport;
