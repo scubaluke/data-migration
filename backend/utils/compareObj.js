@@ -1,11 +1,4 @@
-export const corruptedObjs = [];
+const compareObj = (newObj, oldObj) =>
+  newObj.name !== oldObj.name || newObj.email !== oldObj.email;
 
-export const compareObj = (newObj, oldObj) => {
-  if (
-    newObj.name !== oldObj.name ||
-    newObj.email !== oldObj.email ||
-    Object.keys(newObj).length !== 4
-  ) {
-    corruptedObjs.push(newObj);
-  }
-};
+export default compareObj;

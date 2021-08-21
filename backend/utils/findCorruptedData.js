@@ -1,4 +1,4 @@
-import { compareObj } from './compareObj.js';
+import compareObj from './compareObj.js';
 
 const findCorruptedData = (newArr, oldArr) => {
   newArr.forEach((el) => {
