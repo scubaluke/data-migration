@@ -1,6 +1,4 @@
-import PG from 'pg';
-
-const { Client } = PG;
+const { Client } = require('pg');
 
 const getNewData = async () => {
   const connectionString = 'postgresql://new:hahaha@localhost:5433/new';
@@ -24,5 +22,4 @@ const getNewData = async () => {
     client.end();
   }
 };
-
-export default getNewData;
+module.exports = getNewData;

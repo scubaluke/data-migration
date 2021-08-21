@@ -1,6 +1,6 @@
-import getNewData from '../getData/getNewData.js';
-import getOldData from '../getData/getOldData.js';
-import generateReport from '../utils/generateReport.js';
+const getNewData = require('../getData/getNewData.js');
+const getOldData = require('../getData/getOldData.js');
+const generateReport = require('../utils/generateReport');
 
 const report = async (req, res) => {
   try {
@@ -13,4 +13,4 @@ const report = async (req, res) => {
     res.status(500).send(error);
   }
 };
-export default report;
+module.exports = report;
