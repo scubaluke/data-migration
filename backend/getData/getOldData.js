@@ -17,12 +17,12 @@ const getOldData = async () => {
   let data = {};
   try {
     data = await client.query('SELECT * FROM accounts');
+    return data.rows;
   } catch (error) {
     console.error(error);
   } finally {
     client.end();
   }
-  return data.rows;
 };
 
 export default getOldData;

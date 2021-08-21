@@ -1,29 +1,26 @@
-const compareObj = (newObj, oldObj) =>
+const notEqual = (newObj, oldObj) =>
   newObj.name !== oldObj.name || newObj.email !== oldObj.email;
 
 const generateReport = (newRecords, oldRecords) => {
-  console.log('scanning DB');
+  console.log('Scanning database, compiling report');
   const missedRecords = [];
   const corruptedRecords = [];
-  /* eslint no-plusplus: "error" */
-  for (let i = oldRecords.length - 1; i >= 0; i -= 1) {
-    const oldRecord = oldRecords[i];
-    const newRecord = newRecords.find((record) => record.id === oldRecord.id);
-    if (newRecord) {
-      if (compareObj(oldRecord, newRecord)) {
+  oldRecords.forEach((oldRecord) => {
+    const newRecordIndex = newRecords.findIndex(
+      (newRecord) => newRecord.id === oldRecord.id
+    );
+    if (newRecordIndex >= 0) {
+      const newRecord = newRecords[newRecordIndex];
+      if (notEqual(newRecord, oldRecord)) {
         corruptedRecords.push(newRecord);
       }
-      // remove newRecord from newRecords so we dont process it again. leaving newlyCreated newRecords
-      const newRecordIndex = newRecords.indexOf(newRecord);
+      // remove newRecord so we are left with newlyCreatedRecords
       newRecords.splice(newRecordIndex, 1);
     } else {
       missedRecords.push(oldRecord);
     }
-    // remove oldRecord from oldRecords so we dont have to iterate again.
-    oldRecords.splice(i, 1);
-  }
-  console.log('Finished Scanning DB');
+  });
+  console.log('Finished scanning database, sending report');
   return { missedRecords, corruptedRecords, newRecords };
 };
-
 export default generateReport;

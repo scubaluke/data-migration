@@ -3,10 +3,14 @@ import getOldData from '../getData/getOldData.js';
 import generateReport from '../utils/generateReport.js';
 
 const report = async (req, res) => {
-  const newRecords = await getNewData();
-  const oldRecords = await getOldData();
+  try {
+    const newRecords = await getNewData();
+    const oldRecords = await getOldData();
 
-  const sendReport = await generateReport(newRecords, oldRecords);
-  res.status(200).send(sendReport);
+    const sendReport = await generateReport(newRecords, oldRecords);
+    res.status(200).send(sendReport);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 export default report;
