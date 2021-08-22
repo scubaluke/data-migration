@@ -21,6 +21,6 @@ const generateReport = (newRecords, oldRecords) => {
     }
   });
   console.log('Finished scanning database, sending report');
-  return { missedRecords, corruptedRecords, newRecords };
+  return { missedRecords, corruptedRecords, newlyCreatedRecords: newRecords };
 };
 module.exports = generateReport;

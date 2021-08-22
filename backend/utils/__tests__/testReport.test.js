@@ -14,6 +14,6 @@ describe('when generateReport runs', () => {
     expect(result.corruptedRecords[1].email).toEqual('corruptEmail@gmail.com');
   });
   test('finds new records', () => {
-    expect(result.newRecords[0].name).toEqual('Newly added data');
+    expect(result.newlyCreatedRecords[0].name).toEqual('Newly added data');
   });
 });
