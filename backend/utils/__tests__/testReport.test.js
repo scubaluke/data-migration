@@ -2,10 +2,8 @@ const { newData, oldData } = require('../testDataset.js');
 const generateReport = require('../generateReport');
 
 let result;
-beforeAll(async (done) => {
+beforeAll(() => {
   result = generateReport(newData, oldData);
-  console.log('first results', result);
-  done();
 });
 describe('when generateReport runs', () => {
   test('finds records missed in migration', () => {
