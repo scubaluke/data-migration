@@ -2,13 +2,16 @@
 
 #### Assumptions: 
 
-- I'm assuming we don't have the headroom to query the production DB in a tight loop AND that there aren't rows being added all the time -- so I instead chose a single costly query to load all the info into memory and compute the differences from there.
+- New rows are not being added all the time, at least at the time of running this program and during the inspection of the report. 
+- We don't have the headroom to query the production DB in a tight loop -- so I instead chose a single costly query to load all the info into memory and compute the differences from there.
 
 - There are no duplicate unique ID's in either database. 
 
 #### Directions:
 - Please pull the code from the repository
-- Yarn install dependency's
+- Yarn install dependency's in the program root directory
+- cd frontend and yarn install frontend dependency's
+- cd .. (back to root)
 - Ensure both docker images are running
     - Please run Old data set on 5432
     - New data set on 5433
@@ -24,6 +27,6 @@
 
 - server will connect to Old data set and query in backend/getData/getOldData.js
 - server will connect to New data set and query in backend/getData/getNewData.js
-- backend/controllers/report.js will generate and server the report
+- backend/controllers/report.js will server the report
 - report will be generated in backend/utils/generateReport.js
 
