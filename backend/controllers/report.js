@@ -1,5 +1,3 @@
-const getNewData = require('../getData/getNewData.js');
-const getOldData = require('../getData/getOldData.js');
 const generateReport = require('../utils/generateReport');
 const connectDB = require('../connectAndQuery/connectDB');
 
