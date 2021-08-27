@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
-import Report from './/Report'
+import Report from './Report'
 import Loader from './Loader'
 
 function Reports() {
