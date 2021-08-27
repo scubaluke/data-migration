@@ -1,7 +1,7 @@
 const { Client } = require('pg');
 const queryDB = require('./queryDb');
 
-const connectDB = async (connectionString) => {
+const connectDB = async (connectionString, queryString) => {
   const client = new Client({
     connectionString,
   });
@@ -11,6 +11,6 @@ const connectDB = async (connectionString) => {
     .then(() => console.log('DB connected'))
     .catch((err) => console.error('DB connection error', err.stack));
 
-  return queryDB(client);
+  return queryDB(client, queryString);
 };
 module.exports = connectDB;

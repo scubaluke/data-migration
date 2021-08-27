@@ -1,6 +1,6 @@
-const queryDB = async (client) => {
+const queryDB = async (client, queryString) => {
   try {
-    const { rows } = await client.query('SELECT * FROM accounts');
+    const { rows } = await client.query(queryString);
     return rows;
   } catch (error) {
     console.error(error);
