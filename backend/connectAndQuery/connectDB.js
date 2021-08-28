@@ -6,16 +6,14 @@ const connectDB = async (connectionString, queryString) => {
     connectionString,
   });
 
-  let result;
   try {
     await client.connect();
-    console.log('connected');
-    result = await queryDB(client, queryString);
+    console.log('DB connected');
   } catch (error) {
     console.error('DB connection error', error.stack);
   }
 
-  return result;
+  return queryDB(client, queryString);
 };
 
 module.exports = connectDB;
