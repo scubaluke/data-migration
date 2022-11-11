@@ -112,7 +112,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const notEqual = (newObj, oldObj) =&gt;
   newObj.name !== oldObj.name || newObj.email !== oldObj.email;
 &nbsp;
-const generateReport = (newRecords, oldRecords) =&gt; {
+const generateReport = ({newRecords, oldRecords}) =&gt; {
   console.log('Scanning database, compiling report');
   const missedRecords = [];
   const corruptedRecords = [];

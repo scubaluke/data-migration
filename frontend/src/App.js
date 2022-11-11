@@ -1,15 +1,12 @@
 import React from 'react'
-import Reports from './components/Reports'
+import Home from './components/pages/Home';
 
 function App() {
- 
   return (
     <>
-   <h1>Data Migration Report</h1>
-    <Reports />
+      <Home />
     </>
   );
 }
-
 
 export default App;
