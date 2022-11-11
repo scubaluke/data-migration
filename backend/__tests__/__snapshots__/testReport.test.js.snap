@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`report method dataStructure should generate correct report 1`] = `
+Object {
+  "corruptedRecords": Array [
+    Object {
+      "email": "myemail@gmail.com",
+      "id": 1,
+      "name": "corrupted",
+    },
+    Object {
+      "email": "corruptEmail@gmail.com",
+      "id": 12,
+      "name": "steve",
+    },
+  ],
+  "missedRecords": Array [
+    Object {
+      "email": "4someemail@gmail.com",
+      "id": 14,
+      "name": "Missed in migration",
+    },
+  ],
+  "newlyCreatedRecords": Array [
+    Object {
+      "email": "youremail@gmail.com",
+      "id": 2,
+      "name": "Newly added data",
+    },
+  ],
+}
+`;
+
+exports[`report method loop method should generate correct report 1`] = `
+Object {
+  "corruptedRecords": Array [
+    Object {
+      "email": "myemail@gmail.com",
+      "id": 1,
+      "name": "corrupted",
+    },
+    Object {
+      "email": "corruptEmail@gmail.com",
+      "id": 12,
+      "name": "steve",
+    },
+  ],
+  "missedRecords": Array [
+    Object {
+      "email": "4someemail@gmail.com",
+      "id": 14,
+      "name": "Missed in migration",
+    },
+  ],
+  "newlyCreatedRecords": Array [
+    Object {
+      "email": "youremail@gmail.com",
+      "id": 2,
+      "name": "Newly added data",
+    },
+  ],
+}
+`;

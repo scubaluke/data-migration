@@ -2,7 +2,7 @@ const express = require('express');
 
 const allNewData = require('./controllers/allNewData');
 const allOldData = require('./controllers/allOldData');
-const sendReport = require('./controllers/sendReport');
+const sendReport = require('./routes/sendReport');
 const sendCSV = require('./controllers/sendCSV')
 
 const app = express();

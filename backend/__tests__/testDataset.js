@@ -1,4 +1,4 @@
-const newData = [
+const newRecords = [
   { id: 1, name: 'corrupted', email: 'myemail@gmail.com' },
   { id: 2, name: 'Newly added data', email: 'youremail@gmail.com' },
   { id: 3, name: 'kathy', email: 'thisemail@gmail.com' },
@@ -10,7 +10,7 @@ const newData = [
   },
   { id: 12, name: 'steve', email: 'corruptEmail@gmail.com' },
 ];
-const oldData = [
+const oldRecords = [
   { id: 1, name: 'jim', email: 'myemail@gmail.com' },
   { id: 3, name: 'kathy', email: 'thisemail@gmail.com' },
   { id: 4, name: 'joe', email: 'someemail@gmail.com' },
@@ -18,4 +18,4 @@ const oldData = [
   { id: 14, name: 'Missed in migration', email: '4someemail@gmail.com' },
   // { id: 15, name: 'extra', email: 'extra@gmail.com' },
 ];
-module.exports = { newData, oldData };
+module.exports = { newRecords, oldRecords };
