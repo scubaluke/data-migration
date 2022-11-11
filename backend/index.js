@@ -2,18 +2,20 @@ const express = require('express');
 
 const allNewData = require('./controllers/allNewData');
 const allOldData = require('./controllers/allOldData');
-const report = require('./controllers/report');
+const sendReport = require('./controllers/sendReport');
+const sendCSV = require('./controllers/sendCSV')
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5004;
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Api running!');
-});
+app.use('/report', sendReport);
+app.use('/data', sendCSV);
+
 
 app.get('/old', allOldData);
 app.get('/new', allNewData);
-app.get('/report', report);
+
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);

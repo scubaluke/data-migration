@@ -1,19 +1,19 @@
-const generateReport = require('../utils/generateReport');
-const connectDB = require('../connectAndQuery/connectDB');
+const getRecords = require('../utils/getRecords')
+const timeFunction = require('../utils/timeFunction');
 
 const report = async (req, res) => {
-  try {
-    const newConnectionString = 'postgresql://new:hahaha@localhost:5433/new';
-    const oldConnectionString = 'postgresql://old:hehehe@localhost:5432/old';
-    const queryString = 'SELECT * FROM accounts';
+    const method = req.params.method.replace(':', '')
+    const callback = require(`../reportGenerators/${method}`)
 
-    const newRecords = await connectDB(newConnectionString, queryString);
-    const oldRecords = await connectDB(oldConnectionString, queryString);
+    try {
+        const callbackParams = await getRecords()
 
-    const sendReport = await generateReport(newRecords, oldRecords);
-    res.status(200).send(sendReport);
-  } catch (error) {
-    res.status(500).send(error);
-  }
+        const report = timeFunction({ callback, callbackParams })
+        console.log(report.runTime);
+        res.status(200).send(report);
+    } catch (error) {
+        res.status(500).send(error);
+        console.error(error);
+    }
 };
 module.exports = report;

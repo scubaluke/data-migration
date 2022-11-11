@@ -1,10 +1,11 @@
-const { newData, oldData } = require('../testDataset.js');
+const { newData, oldData } = require('./__snapshots__/testDataset.js');
 const generateReport = require('../generateReport');
 
 let result;
 beforeAll(() => {
   result = generateReport(newData, oldData);
 });
+
 describe('when generateReport runs', () => {
   test('finds records missed in migration', () => {
     expect(result.missedRecords[0].name).toEqual('Missed in migration');
@@ -15,5 +16,8 @@ describe('when generateReport runs', () => {
   });
   test('finds new records', () => {
     expect(result.newlyCreatedRecords[0].name).toEqual('Newly added data');
+  });
+  test('matches snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 });
